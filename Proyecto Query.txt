@@ -1,0 +1,35 @@
+CREATE SCHEMA proyectoWEB;
+
+create user 'admin'@'localhost' identified by 'Pizzeria123';
+grant all privileges on proyectoWEB. to 'admin'@'localhost';
+flush privileges;
+
+CREATE TABLE proyectoWEB.usuarios (
+  usuario VARCHAR(30) PRIMARY KEY NOT NULL,
+  contrasenna VARCHAR(15),
+  rol VARCHAR (10)
+);
+
+CREATE TABLE proyectoWEB.clientes (
+  id_cliente INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  fecha_pedido DATE
+);
+
+CREATE TABLE proyectoWEB.ordenes (
+  id_orden INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  id_cliente INT,
+  fecha_pedido DATE,
+  FOREIGN KEY (id_cliente)
+  REFERENCES clientes (id_cliente)
+);
+
+CREATE TABLE proyectoWEB.productos (
+  id_producto INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  categoria VARCHAR(30),
+  en_promocion BOOL,
+  ingredientes VARCHAR(255)
+)
+
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_general_ci;

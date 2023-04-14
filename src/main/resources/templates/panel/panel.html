@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://wwww.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+    <head>
+        <title>Admin Panel</title>
+        <meta charset="UTF-8"/>
+        <link href="/css/estilos.css" rel="stylesheet" />
+    </head>
+    <body>
+        <header>
+            <h1>Pedidos Pizzeria Feliz :)</h1>
+        </header>
+
+        <!-- TABLA DE PEDIDOS ENTRANTES -->
+        <table class="tableEntrantes">
+            <caption style="margin-bottom: 10px;">PEDIDOS ENTRANTES 🍕</caption>
+            <thead>
+                <tr>
+                    <th>Cliente</th>
+                    <th>Descripción</th>
+                    <th>Fecha</th>
+                    <th>Descuento</th>
+                    <th>Total</th>
+                    <th>Marcar como</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="pedido : ${pedidos}" th:if="${pedido.estado == 0}">
+                    <td th:text="${pedido.nombreC}"></td>
+                    <td th:text="${pedido.descripcion}"></td>
+                    <td th:text="${pedido.fecha}"></td>
+                    <div th:if="${pedido.descuento == true}">
+                        <td th:text="Si"></td>
+                    </div>
+                    <div th:if="${pedido.descuento == false}">
+                        <td th:text="No"></td>
+                    </div>
+                    <td th:text="${pedido.total}"></td>
+                    <!-- Botones -->
+                    <td >
+                        <form th:action="@{/panel/guardarEstado}" method="POST" th:object="${pedido}" style="display: inline-block;">
+                            <input type="hidden" name="id_pedido" th:value="${pedido.id_pedido}" />
+                            <input type="hidden" name="nombreC" th:value="${pedido.nombreC}" />
+                            <input type="hidden" name="descripcion" th:value="${pedido.descripcion}" />
+                            <input type="hidden" name="fecha" th:value="${pedido.fecha}" />
+                            <input type="hidden" name="descuento" th:value="${pedido.descuento}" />
+                            <input type="hidden" name="total" th:value="${pedido.total}" />
+
+                            <input type="hidden" name="estado" value="1"/>
+
+                            <input type="submit" name="guardar" value="En Proceso" class="buttonMarcha button1"/>
+                        </form>
+
+                        <form th:action="@{/panel/guardarEstado}" method="POST" th:object="${pedido}" style="display: inline-block;">
+                            <input type="hidden" name="id_pedido" th:value="${pedido.id_pedido}" />
+                            <input type="hidden" name="nombreC" th:value="${pedido.nombreC}" />
+                            <input type="hidden" name="descripcion" th:value="${pedido.descripcion}" />
+                            <input type="hidden" name="fecha" th:value="${pedido.fecha}" />
+                            <input type="hidden" name="descuento" th:value="${pedido.descuento}" />
+                            <input type="hidden" name="total" th:value="${pedido.total}" />
+
+                            <input type="hidden" name="estado" value="2"/>
+
+                            <input type="submit" name="guardar" value="Entregado" class="buttonEntregado button2"/>
+                        </form>
+
+                        <form th:action="@{/panel/guardarEstado}" method="POST" th:object="${pedido}" style="display: inline-block;">
+                            <input type="hidden" name="id_pedido" th:value="${pedido.id_pedido}" />
+                            <input type="hidden" name="nombreC" th:value="${pedido.nombreC}" />
+                            <input type="hidden" name="descripcion" th:value="${pedido.descripcion}" />
+                            <input type="hidden" name="fecha" th:value="${pedido.fecha}" />
+                            <input type="hidden" name="descuento" th:value="${pedido.descuento}" />
+                            <input type="hidden" name="total" th:value="${pedido.total}" />
+
+                            <input type="hidden" name="estado" value="3"/>
+
+                            <input type="submit" name="guardar" value="Cancelar" class="buttonCancelado button3"/>
+                        </form>
+
+                        <form th:action="@{/panel/eliminar}" method="POST" th:object="${pedido}" style="display: inline-block;">
+                            <input type="hidden" name="id_pedido" th:value="${pedido.id_pedido}" />
+                            <input type="hidden" name="nombreC" th:value="${pedido.nombreC}" />
+                            <input type="hidden" name="descripcion" th:value="${pedido.descripcion}" />
+                            <input type="hidden" name="fecha" th:value="${pedido.fecha}" />
+                            <input type="hidden" name="descuento" th:value="${pedido.descuento}" />
+                            <input type="hidden" name="total" th:value="${pedido.total}" />
+
+                            <input type="hidden" name="estado" value="3"/>
+
+                            <input type="submit" name="guardar" value="Eliminar" class="buttonCancelado button3"/>
+                        </form>
+
+                    </td>
+                    <!-- Fin Botones -->
+                </tr>
+            </tbody>
+        </table>
+        <br/>
+        <br/>
+        <br/>
+
+        <!-- TABLA DE PEDIDOS EN MARCHA -->
+        <table border="1" class="tablePedidos">
+            <caption style="margin-bottom: 10px;">PEDIDOS EN MARCHA 😀</caption>
+            <thead>
+                <tr>
+                    <th>Cliente</th>
+                    <th>Descripción</th>
+                    <th>Fecha</th>
+                    <th>Descuento</th>
+                    <th>Total</th>
+                    <th>Marcar como</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="pedido : ${pedidos}" th:if="${pedido.estado == 1}">
+                    <td th:text="${pedido.nombreC}"></td>
+                    <td th:text="${pedido.descripcion}"></td>
+                    <td th:text="${pedido.fecha}"></td>
+                    <div th:if="${pedido.descuento == true}">
+                        <td th:text="Si"></td>
+                    </div>
+                    <div th:if="${pedido.descuento == false}">
+                        <td th:text="No"></td>
+                    </div>
+                    <td th:text="${pedido.total}"></td>
+                    <!-- Botones -->
+                    <td colspan="3">
+                        <form th:action="@{/panel/guardarEstado}" method="POST" th:object="${pedido}" style="display: inline-block;">
+                            <input type="hidden" name="id_pedido" th:value="${pedido.id_pedido}" />
+                            <input type="hidden" name="nombreC" th:value="${pedido.nombreC}" />
+                            <input type="hidden" name="descripcion" th:value="${pedido.descripcion}" />
+                            <input type="hidden" name="fecha" th:value="${pedido.fecha}" />
+                            <input type="hidden" name="descuento" th:value="${pedido.descuento}" />
+                            <input type="hidden" name="total" th:value="${pedido.total}" />
+
+                            <input type="hidden" name="estado" value="1"/>
+
+                            <input type="submit" name="guardar" value="En Proceso" class="buttonMarcha button1"/>
+                        </form>
+                        <form th:action="@{/panel/guardarEstado}" method="POST" th:object="${pedido}" style="display: inline-block;">
+                            <input type="hidden" name="id_pedido" th:value="${pedido.id_pedido}" />
+                            <input type="hidden" name="nombreC" th:value="${pedido.nombreC}" />
+                            <input type="hidden" name="descripcion" th:value="${pedido.descripcion}" />
+                            <input type="hidden" name="fecha" th:value="${pedido.fecha}" />
+                            <input type="hidden" name="descuento" th:value="${pedido.descuento}" />
+                            <input type="hidden" name="total" th:value="${pedido.total}" />
+
+                            <input type="hidden" name="estado" value="2"/>
+
+                            <input type="submit" name="guardar" value="Entregado" class="buttonEntregado button2"/>
+                        </form>
+                        <form th:action="@{/panel/guardarEstado}" method="POST" th:object="${pedido}" style="display: inline-block;">
+                            <input type="hidden" name="id_pedido" th:value="${pedido.id_pedido}" />
+                            <input type="hidden" name="nombreC" th:value="${pedido.nombreC}" />
+                            <input type="hidden" name="descripcion" th:value="${pedido.descripcion}" />
+                            <input type="hidden" name="fecha" th:value="${pedido.fecha}" />
+                            <input type="hidden" name="descuento" th:value="${pedido.descuento}" />
+                            <input type="hidden" name="total" th:value="${pedido.total}" />
+
+                            <input type="hidden" name="estado" value="3"/>
+
+                            <input type="submit" name="guardar" value="Cancelar" class="buttonCancelado button3"/>
+                        </form>                        
+
+                        <form th:action="@{/panel/eliminar}" method="POST" th:object="${pedido}" style="display: inline-block;">
+                            <input type="hidden" name="id_pedido" th:value="${pedido.id_pedido}" />
+                            <input type="hidden" name="nombreC" th:value="${pedido.nombreC}" />
+                            <input type="hidden" name="descripcion" th:value="${pedido.descripcion}" />
+                            <input type="hidden" name="fecha" th:value="${pedido.fecha}" />
+                            <input type="hidden" name="descuento" th:value="${pedido.descuento}" />
+                            <input type="hidden" name="total" th:value="${pedido.total}" />
+
+                            <input type="hidden" name="estado" value="3"/>
+
+                            <input type="submit" name="guardar" value="Eliminar" class="buttonCancelado button3"/>
+                        </form>
+                    </td>
+                    <!-- Fin Botones -->
+                </tr>
+            </tbody>
+        </table>
+        <br/>
+        <br/>
+        <br/>
+
+        <!-- TABLA DE PEDIDOS EN ENTREGADOS -->
+        <table border="1" class="tablePedidos">
+            <caption style="margin-bottom: 10px;">PEDIDOS ENTREGADOS ⭐</caption>
+            <thead>
+                <tr>
+                    <th>Cliente</th>
+                    <th>Descripción</th>
+                    <th>Fecha</th>
+                    <th>Descuento</th>
+                    <th>Total</th>
+                    <th>Marcar como</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="pedido : ${pedidos}" th:if="${pedido.estado == 2}">
+                    <td th:text="${pedido.nombreC}"></td>
+                    <td th:text="${pedido.descripcion}"></td>
+                    <td th:text="${pedido.fecha}"></td>
+                    <div th:if="${pedido.descuento == true}">
+                        <td th:text="Si"></td>
+                    </div>
+                    <div th:if="${pedido.descuento == false}">
+                        <td th:text="No"></td>
+                    </div>
+                    <td th:text="${pedido.total}"></td>                   
+                    <!-- Botones -->
+                    <td>
+                        <form th:action="@{/panel/guardarEstado}" method="POST" th:object="${pedido}" style="display: inline-block;">
+                            <input type="hidden" name="id_pedido" th:value="${pedido.id_pedido}" />
+                            <input type="hidden" name="nombreC" th:value="${pedido.nombreC}" />
+                            <input type="hidden" name="descripcion" th:value="${pedido.descripcion}" />
+                            <input type="hidden" name="fecha" th:value="${pedido.fecha}" />
+                            <input type="hidden" name="descuento" th:value="${pedido.descuento}" />
+                            <input type="hidden" name="total" th:value="${pedido.total}" />
+
+                            <input type="hidden" name="estado" value="1"/>
+
+                            <input type="submit" name="guardar" value="En Proceso" class="buttonMarcha button1"/>
+                        </form>
+                        <form th:action="@{/panel/guardarEstado}" method="POST" th:object="${pedido}" style="display: inline-block;">
+                            <input type="hidden" name="id_pedido" th:value="${pedido.id_pedido}" />
+                            <input type="hidden" name="nombreC" th:value="${pedido.nombreC}" />
+                            <input type="hidden" name="descripcion" th:value="${pedido.descripcion}" />
+                            <input type="hidden" name="fecha" th:value="${pedido.fecha}" />
+                            <input type="hidden" name="descuento" th:value="${pedido.descuento}" />
+                            <input type="hidden" name="total" th:value="${pedido.total}" />
+
+                            <input type="hidden" name="estado" value="2"/>
+
+                            <input type="submit" name="guardar" value="Entregado" class="buttonEntregado button2"/>
+                        </form>
+
+                        <form th:action="@{/panel/guardarEstado}" method="POST" th:object="${pedido}" style="display: inline-block;">
+                            <input type="hidden" name="id_pedido" th:value="${pedido.id_pedido}" />
+                            <input type="hidden" name="nombreC" th:value="${pedido.nombreC}" />
+                            <input type="hidden" name="descripcion" th:value="${pedido.descripcion}" />
+                            <input type="hidden" name="fecha" th:value="${pedido.fecha}" />
+                            <input type="hidden" name="descuento" th:value="${pedido.descuento}" />
+                            <input type="hidden" name="total" th:value="${pedido.total}" />
+
+                            <input type="hidden" name="estado" value="3"/>
+
+                            <input type="submit" name="guardar" value="Cancelar" class="buttonCancelado button3"/>
+                        </form> 
+
+                        <form th:action="@{/panel/eliminar}" method="POST" th:object="${pedido}" style="display: inline-block;">
+                            <input type="hidden" name="id_pedido" th:value="${pedido.id_pedido}" />
+                            <input type="hidden" name="nombreC" th:value="${pedido.nombreC}" />
+                            <input type="hidden" name="descripcion" th:value="${pedido.descripcion}" />
+                            <input type="hidden" name="fecha" th:value="${pedido.fecha}" />
+                            <input type="hidden" name="descuento" th:value="${pedido.descuento}" />
+                            <input type="hidden" name="total" th:value="${pedido.total}" />
+
+                            <input type="hidden" name="estado" value="3"/>
+
+                            <input type="submit" name="guardar" value="Eliminar" class="buttonCancelado button3"/>
+                        </form>
+                    </td>
+                    <!-- Fin Botones -->
+                </tr>
+            </tbody>
+        </table>
+        <br/>
+        <br/>
+        <br/>
+
+        <!-- TABLA DE PEDIDOS EN CANCELADOS -->
+        <table border="1" class="tablePedidos">
+            <caption style="margin-bottom: 10px;">PEDIDOS EN CANCELADOS 😞</caption>
+            <thead>                
+                <tr>
+                    <th>Cliente</th>
+                    <th>Descripción</th>
+                    <th>Fecha</th>
+                    <th>Descuento</th>
+                    <th>Total</th>
+                    <th>Marcar como</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="pedido : ${pedidos}" th:if="${pedido.estado == 3}">
+                    <td th:text="${pedido.nombreC}"></td>
+                    <td th:text="${pedido.descripcion}"></td>
+                    <td th:text="${pedido.fecha}"></td>
+                    <div th:if="${pedido.descuento == true}">
+                        <td th:text="Si"></td>
+                    </div>
+                    <div th:if="${pedido.descuento == false}">
+                        <td th:text="No"></td>
+                    </div>
+                    <td th:text="${pedido.total}"></td>
+                    <!-- Botones -->
+                    <td>
+                        <form th:action="@{/panel/guardarEstado}" method="POST" th:object="${pedido}" style="display: inline-block;">
+                            <input type="hidden" name="id_pedido" th:value="${pedido.id_pedido}" />
+                            <input type="hidden" name="nombreC" th:value="${pedido.nombreC}" />
+                            <input type="hidden" name="descripcion" th:value="${pedido.descripcion}" />
+                            <input type="hidden" name="fecha" th:value="${pedido.fecha}" />
+                            <input type="hidden" name="descuento" th:value="${pedido.descuento}" />
+                            <input type="hidden" name="total" th:value="${pedido.total}" />
+
+                            <input type="hidden" name="estado" value="1"/>
+
+                            <input type="submit" name="guardar" value="En Proceso" class="buttonMarcha button1"/>
+                        </form>
+
+                        <form th:action="@{/panel/guardarEstado}" method="POST" th:object="${pedido}" style="display: inline-block;">
+                            <input type="hidden" name="id_pedido" th:value="${pedido.id_pedido}" />
+                            <input type="hidden" name="nombreC" th:value="${pedido.nombreC}" />
+                            <input type="hidden" name="descripcion" th:value="${pedido.descripcion}" />
+                            <input type="hidden" name="fecha" th:value="${pedido.fecha}" />
+                            <input type="hidden" name="descuento" th:value="${pedido.descuento}" />
+                            <input type="hidden" name="total" th:value="${pedido.total}" />
+
+                            <input type="hidden" name="estado" value="2"/>
+
+                            <input type="submit" name="guardar" value="Entregado" class="buttonEntregado button2"/>
+                        </form>
+
+                        <form th:action="@{/panel/guardarEstado}" method="POST" th:object="${pedido}" style="display: inline-block;">
+                            <input type="hidden" name="id_pedido" th:value="${pedido.id_pedido}" />
+                            <input type="hidden" name="nombreC" th:value="${pedido.nombreC}" />
+                            <input type="hidden" name="descripcion" th:value="${pedido.descripcion}" />
+                            <input type="hidden" name="fecha" th:value="${pedido.fecha}" />
+                            <input type="hidden" name="descuento" th:value="${pedido.descuento}" />
+                            <input type="hidden" name="total" th:value="${pedido.total}" />
+
+                            <input type="hidden" name="estado" value="3"/>
+
+                            <input type="submit" name="guardar" value="Cancelar" class="buttonCancelado button3"/>
+                        </form>  
+
+                        <form th:action="@{/panel/eliminar}" method="POST" th:object="${pedido}" style="display: inline-block;">
+                            <input type="hidden" name="id_pedido" th:value="${pedido.id_pedido}" />
+                            <input type="hidden" name="nombreC" th:value="${pedido.nombreC}" />
+                            <input type="hidden" name="descripcion" th:value="${pedido.descripcion}" />
+                            <input type="hidden" name="fecha" th:value="${pedido.fecha}" />
+                            <input type="hidden" name="descuento" th:value="${pedido.descuento}" />
+                            <input type="hidden" name="total" th:value="${pedido.total}" />
+
+                            <input type="hidden" name="estado" value="3"/>
+
+                            <input type="submit" name="guardar" value="Eliminar" class="buttonCancelado button3"/>
+                        </form>
+                    </td>
+                    <!-- Fin Botones -->
+                </tr>
+            </tbody>
+        </table>
+        <br/>
+        <br/>
+        <br/>
+
+        <footer>
+            <p>&COPY Derechos de Pizzeria 2023                                
+                <form method="post" th:action="@{/logout}">
+                    <button>Cerrar Sesión</button>
+                </form></p>
+        </footer>
+    </body>
+</html>

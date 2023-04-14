@@ -1,16 +1,21 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
+<html lang="es" 
+      xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://wwww.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
     <head>
         <title>Admin Panel</title>
+
         <meta charset="UTF-8"/>
-        <link href="/css/estilos.css" rel="stylesheet" />
+        <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}"/>
+        <link rel="stylesheet" th:href="@{/webjars/font-awesome/5.15.3/css/all.min.css}"/>
+
+        <link href="/css/panel.css" rel="stylesheet" />
     </head>
     <body>
         <header>
             <h1>Pedidos Pizzeria Feliz :)</h1>
-        </header>
+        </header>        
 
         <!-- TABLA DE PEDIDOS ENTRANTES -->
         <table class="tableEntrantes">
@@ -49,7 +54,8 @@
 
                             <input type="hidden" name="estado" value="1"/>
 
-                            <input type="submit" name="guardar" value="En Proceso" class="buttonMarcha button1"/>
+                            <button type="submit" name="guardar" value="En Proceso" class="buttonMarcha button1"> En Proceso <i class="fa fa-hourglass-2" style="background-color: orange; color: white;"></i> </button>
+
                         </form>
 
                         <form th:action="@{/panel/guardarEstado}" method="POST" th:object="${pedido}" style="display: inline-block;">
@@ -62,7 +68,7 @@
 
                             <input type="hidden" name="estado" value="2"/>
 
-                            <input type="submit" name="guardar" value="Entregado" class="buttonEntregado button2"/>
+                            <button type="submit" name="guardar" value="Entregado" class="buttonEntregado button2"> Entregado <i class="fa fa-thumbs-up" style="background-color: green; color: white;"></i> </button>                            
                         </form>
 
                         <form th:action="@{/panel/guardarEstado}" method="POST" th:object="${pedido}" style="display: inline-block;">
@@ -75,9 +81,9 @@
 
                             <input type="hidden" name="estado" value="3"/>
 
-                            <input type="submit" name="guardar" value="Cancelar" class="buttonCancelado button3"/>
+                            <button type="submit" name="guardar" value="Cancelar" class="buttonCancelado button3"> Cancelar <i class="fa fa-thumbs-down" style="background-color: red; color: white;"></i> </button>
                         </form>
-
+                        
                         <form th:action="@{/panel/eliminar}" method="POST" th:object="${pedido}" style="display: inline-block;">
                             <input type="hidden" name="id_pedido" th:value="${pedido.id_pedido}" />
                             <input type="hidden" name="nombreC" th:value="${pedido.nombreC}" />
@@ -88,9 +94,8 @@
 
                             <input type="hidden" name="estado" value="3"/>
 
-                            <input type="submit" name="guardar" value="Eliminar" class="buttonCancelado button3"/>
+                            <button type="submit" name="guardar" value="Eliminar" class="buttonCancelado button3"> Eliminar <i class="fas fa-trash-alt" style="background-color: red; color: white;"></i> </button>
                         </form>
-
                     </td>
                     <!-- Fin Botones -->
                 </tr>
@@ -137,7 +142,7 @@
 
                             <input type="hidden" name="estado" value="1"/>
 
-                            <input type="submit" name="guardar" value="En Proceso" class="buttonMarcha button1"/>
+                            <button type="submit" name="guardar" value="En Proceso" class="buttonMarcha button1"> En Proceso <i class="fa fa-hourglass-2" style="background-color: orange; color: white;"></i> </button>
                         </form>
                         <form th:action="@{/panel/guardarEstado}" method="POST" th:object="${pedido}" style="display: inline-block;">
                             <input type="hidden" name="id_pedido" th:value="${pedido.id_pedido}" />
@@ -149,7 +154,7 @@
 
                             <input type="hidden" name="estado" value="2"/>
 
-                            <input type="submit" name="guardar" value="Entregado" class="buttonEntregado button2"/>
+                            <button type="submit" name="guardar" value="Entregado" class="buttonEntregado button2"> Entregado <i class="fa fa-thumbs-up" style="background-color: green; color: white;"></i> </button>
                         </form>
                         <form th:action="@{/panel/guardarEstado}" method="POST" th:object="${pedido}" style="display: inline-block;">
                             <input type="hidden" name="id_pedido" th:value="${pedido.id_pedido}" />
@@ -161,7 +166,7 @@
 
                             <input type="hidden" name="estado" value="3"/>
 
-                            <input type="submit" name="guardar" value="Cancelar" class="buttonCancelado button3"/>
+                            <button type="submit" name="guardar" value="Cancelar" class="buttonCancelado button3"> Cancelar <i class="fa fa-thumbs-down" style="background-color: red; color: white;"></i> </button>
                         </form>                        
 
                         <form th:action="@{/panel/eliminar}" method="POST" th:object="${pedido}" style="display: inline-block;">
@@ -174,7 +179,7 @@
 
                             <input type="hidden" name="estado" value="3"/>
 
-                            <input type="submit" name="guardar" value="Eliminar" class="buttonCancelado button3"/>
+                            <button type="submit" name="guardar" value="Eliminar" class="buttonCancelado button3"> Eliminar <i class="fas fa-trash-alt" style="background-color: red; color: white;"></i> </button>
                         </form>
                     </td>
                     <!-- Fin Botones -->
@@ -222,7 +227,7 @@
 
                             <input type="hidden" name="estado" value="1"/>
 
-                            <input type="submit" name="guardar" value="En Proceso" class="buttonMarcha button1"/>
+                            <button type="submit" name="guardar" value="En Proceso" class="buttonMarcha button1"> En Proceso <i class="fa fa-hourglass-2" style="background-color: orange; color: white;"></i> </button>
                         </form>
                         <form th:action="@{/panel/guardarEstado}" method="POST" th:object="${pedido}" style="display: inline-block;">
                             <input type="hidden" name="id_pedido" th:value="${pedido.id_pedido}" />
@@ -234,7 +239,7 @@
 
                             <input type="hidden" name="estado" value="2"/>
 
-                            <input type="submit" name="guardar" value="Entregado" class="buttonEntregado button2"/>
+                            <button type="submit" name="guardar" value="Entregado" class="buttonEntregado button2"> Entregado <i class="fa fa-thumbs-up" style="background-color: green; color: white;"></i> </button>
                         </form>
 
                         <form th:action="@{/panel/guardarEstado}" method="POST" th:object="${pedido}" style="display: inline-block;">
@@ -247,7 +252,7 @@
 
                             <input type="hidden" name="estado" value="3"/>
 
-                            <input type="submit" name="guardar" value="Cancelar" class="buttonCancelado button3"/>
+                            <button type="submit" name="guardar" value="Cancelar" class="buttonCancelado button3"> Cancelar <i class="fa fa-thumbs-down" style="background-color: red; color: white;"></i> </button>
                         </form> 
 
                         <form th:action="@{/panel/eliminar}" method="POST" th:object="${pedido}" style="display: inline-block;">
@@ -260,7 +265,7 @@
 
                             <input type="hidden" name="estado" value="3"/>
 
-                            <input type="submit" name="guardar" value="Eliminar" class="buttonCancelado button3"/>
+                            <button type="submit" name="guardar" value="Eliminar" class="buttonCancelado button3"> Eliminar <i class="fas fa-trash-alt" style="background-color: red; color: white;"></i> </button>
                         </form>
                     </td>
                     <!-- Fin Botones -->
@@ -308,7 +313,7 @@
 
                             <input type="hidden" name="estado" value="1"/>
 
-                            <input type="submit" name="guardar" value="En Proceso" class="buttonMarcha button1"/>
+                            <button type="submit" name="guardar" value="En Proceso" class="buttonMarcha button1"> En Proceso <i class="fa fa-hourglass-2" style="background-color: orange; color: white;"></i> </button>
                         </form>
 
                         <form th:action="@{/panel/guardarEstado}" method="POST" th:object="${pedido}" style="display: inline-block;">
@@ -321,7 +326,7 @@
 
                             <input type="hidden" name="estado" value="2"/>
 
-                            <input type="submit" name="guardar" value="Entregado" class="buttonEntregado button2"/>
+                            <button type="submit" name="guardar" value="Entregado" class="buttonEntregado button2"> Entregado <i class="fa fa-thumbs-up" style="background-color: green; color: white;"></i> </button>
                         </form>
 
                         <form th:action="@{/panel/guardarEstado}" method="POST" th:object="${pedido}" style="display: inline-block;">
@@ -334,7 +339,7 @@
 
                             <input type="hidden" name="estado" value="3"/>
 
-                            <input type="submit" name="guardar" value="Cancelar" class="buttonCancelado button3"/>
+                            <button type="submit" name="guardar" value="Cancelar" class="buttonCancelado button3"> Cancelar <i class="fa fa-thumbs-down" style="background-color: red; color: white;"></i> </button>
                         </form>  
 
                         <form th:action="@{/panel/eliminar}" method="POST" th:object="${pedido}" style="display: inline-block;">
@@ -347,7 +352,7 @@
 
                             <input type="hidden" name="estado" value="3"/>
 
-                            <input type="submit" name="guardar" value="Eliminar" class="buttonCancelado button3"/>
+                            <button type="submit" name="guardar" value="Eliminar" class="buttonCancelado button3"> Eliminar <i class="fas fa-trash-alt" style="background-color: red; color: white;"></i> </button>
                         </form>
                     </td>
                     <!-- Fin Botones -->

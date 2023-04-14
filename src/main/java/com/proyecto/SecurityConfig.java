@@ -24,7 +24,6 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http)
             throws Exception {
-        String url = "/panel/panel";
         http
                 .authorizeHttpRequests((requests) -> requests
                 .requestMatchers(
@@ -32,7 +31,9 @@ public class SecurityConfig {
                         "/index",
                         "/webjars/**",
                         "/css",
-                        "/css/**").permitAll()
+                        "/css/**",
+                        "/js",
+                        "/js/**").permitAll()
                 .requestMatchers(
                         "/panel/panel")
                 .hasAnyRole("ADMIN", "VENDEDOR", "VISITA")
@@ -47,7 +48,6 @@ public class SecurityConfig {
                 .permitAll()
                 .successHandler(new CustomAuthenticationSuccessHandler()))
                 .logout((logout) -> logout.permitAll());
-
         return http.build();
     }
 

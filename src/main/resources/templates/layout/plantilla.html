@@ -9,14 +9,17 @@
         <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
         <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
     </head>
-    
+
     <body>
         <header th:fragment="header" class="header">
 
         </header>
 
-        <footer th:fragment="footer" class="bg-info text-white mt-5 p-2">
-
+        <footer th:fragment="pFooter">
+            <p>&COPY Derechos de Pizzeria 2023                             
+                <form method="post" th:action="@{/logout}">
+                    <button>Cerrar Sesión</button>
+                </form></p>
         </footer>
 
     </body>

@@ -31,9 +31,8 @@ public class SecurityConfig {
                         "/index",
                         "/webjars/**",
                         "/css",
-                        "/css/**",
-                        "/js",
-                        "/js/**").permitAll()
+                        "/js/**",
+                        "/articulo/**").permitAll()
                 .requestMatchers(
                         "/panel/panel")
                 .hasAnyRole("ADMIN", "VENDEDOR", "VISITA")

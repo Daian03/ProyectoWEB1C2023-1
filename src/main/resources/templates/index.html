@@ -4,7 +4,7 @@
       xmlns:th="http://wwww.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
     <head>
-        <title>Admin Panel</title>
+        <title>Pizzeria Feliz :)</title>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link th:href="@{/css/panel.css}" rel="stylesheet" type="text/css"/>
@@ -24,7 +24,24 @@
             }
         </style>
     </head>
-    <body>
-        holas
-    </body>
+    <div class="container">
+        <h2>Nuestras Pizzas Deliciosas y sabrosas</h2>
+        <div class="row row-cols-3">
+            <div class="card" th:each="articulos : ${articulo}">
+                <div class="card-body">
+                    <!--<img th:src="${articulo.imagen}" alt="foto" height="200px"/>-->
+                    <h5 class="card-title">[[${articulo.nombre}]]</h5>
+                    <h6 class="card-subtitle mb-2 text-muted text-end">
+                        [[${articulo.precio}]]
+                    </h6>
+                    <!--
+                    <a class="card-link" th:href="@{carrito/agregar} + ${articulo.id_articulo}">
+                        Comprar</a>
+                    <p class="card-text">Descripción</p>
+                    -->
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
 </html>

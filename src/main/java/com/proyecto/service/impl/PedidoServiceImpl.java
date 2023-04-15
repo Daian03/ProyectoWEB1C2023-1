@@ -35,6 +35,6 @@ public class PedidoServiceImpl implements PedidoService {
     @Override
     @Transactional(readOnly = true)
     public Pedido getPedido(Pedido pedido) {
-        return pedido;
+         return pedidoDao.findById(pedido.getIdPedido()).orElse(null);
     } 
 }

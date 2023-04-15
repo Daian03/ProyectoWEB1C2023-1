@@ -3,13 +3,15 @@
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://wwww.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+    
+    <!--<head th:replace="~{layout/plantilla :: head}">-->
+    
     <head>
         <title>Admin Panel</title>
 
         <meta charset="UTF-8"/>
         <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}"/>
         <link rel="stylesheet" th:href="@{/webjars/font-awesome/5.15.3/css/all.min.css}"/>
-
         <link href="/css/panel.css" rel="stylesheet" />
     </head>
     <body>
@@ -32,7 +34,7 @@
             </thead>
             <tbody>
                 <tr th:each="pedido : ${pedidos}" th:if="${pedido.estado == 0}">
-                    <td th:text="${pedido.nombreC}"></td>
+                    <td th:text="${pedido.nombre}"></td>
                     <td th:text="${pedido.descripcion}"></td>
                     <td th:text="${pedido.fecha}"></td>
                     <div th:if="${pedido.descuento == true}">
@@ -46,7 +48,7 @@
                     <td >
                         <form th:action="@{/panel/guardarEstado}" method="POST" th:object="${pedido}" style="display: inline-block;">
                             <input type="hidden" name="id_pedido" th:value="${pedido.id_pedido}" />
-                            <input type="hidden" name="nombreC" th:value="${pedido.nombreC}" />
+                            <input type="hidden" name="nombre" th:value="${pedido.nombre}" />
                             <input type="hidden" name="descripcion" th:value="${pedido.descripcion}" />
                             <input type="hidden" name="fecha" th:value="${pedido.fecha}" />
                             <input type="hidden" name="descuento" th:value="${pedido.descuento}" />
@@ -54,13 +56,13 @@
 
                             <input type="hidden" name="estado" value="1"/>
 
-                            <button type="submit" name="guardar" value="En Proceso" class="buttonMarcha button1"> En Proceso <i class="fa fa-hourglass-2" style="background-color: orange; color: white;"></i> </button>
+                            <button type="submit" name="guardar" value="En Proceso" class="buttonMarcha button1"> En Proceso <i class="fas fa-spinner" style="background-color: orange; color: white;"></i> </button>
 
                         </form>
 
                         <form th:action="@{/panel/guardarEstado}" method="POST" th:object="${pedido}" style="display: inline-block;">
                             <input type="hidden" name="id_pedido" th:value="${pedido.id_pedido}" />
-                            <input type="hidden" name="nombreC" th:value="${pedido.nombreC}" />
+                            <input type="hidden" name="nombre" th:value="${pedido.nombre}" />
                             <input type="hidden" name="descripcion" th:value="${pedido.descripcion}" />
                             <input type="hidden" name="fecha" th:value="${pedido.fecha}" />
                             <input type="hidden" name="descuento" th:value="${pedido.descuento}" />
@@ -73,7 +75,7 @@
 
                         <form th:action="@{/panel/guardarEstado}" method="POST" th:object="${pedido}" style="display: inline-block;">
                             <input type="hidden" name="id_pedido" th:value="${pedido.id_pedido}" />
-                            <input type="hidden" name="nombreC" th:value="${pedido.nombreC}" />
+                            <input type="hidden" name="nombre" th:value="${pedido.nombre}" />
                             <input type="hidden" name="descripcion" th:value="${pedido.descripcion}" />
                             <input type="hidden" name="fecha" th:value="${pedido.fecha}" />
                             <input type="hidden" name="descuento" th:value="${pedido.descuento}" />
@@ -86,7 +88,7 @@
                         
                         <form th:action="@{/panel/eliminar}" method="POST" th:object="${pedido}" style="display: inline-block;">
                             <input type="hidden" name="id_pedido" th:value="${pedido.id_pedido}" />
-                            <input type="hidden" name="nombreC" th:value="${pedido.nombreC}" />
+                            <input type="hidden" name="nombre" th:value="${pedido.nombre}" />
                             <input type="hidden" name="descripcion" th:value="${pedido.descripcion}" />
                             <input type="hidden" name="fecha" th:value="${pedido.fecha}" />
                             <input type="hidden" name="descuento" th:value="${pedido.descuento}" />
@@ -120,7 +122,7 @@
             </thead>
             <tbody>
                 <tr th:each="pedido : ${pedidos}" th:if="${pedido.estado == 1}">
-                    <td th:text="${pedido.nombreC}"></td>
+                    <td th:text="${pedido.nombre}"></td>
                     <td th:text="${pedido.descripcion}"></td>
                     <td th:text="${pedido.fecha}"></td>
                     <div th:if="${pedido.descuento == true}">
@@ -134,7 +136,7 @@
                     <td colspan="3">
                         <form th:action="@{/panel/guardarEstado}" method="POST" th:object="${pedido}" style="display: inline-block;">
                             <input type="hidden" name="id_pedido" th:value="${pedido.id_pedido}" />
-                            <input type="hidden" name="nombreC" th:value="${pedido.nombreC}" />
+                            <input type="hidden" name="nombre" th:value="${pedido.nombre}" />
                             <input type="hidden" name="descripcion" th:value="${pedido.descripcion}" />
                             <input type="hidden" name="fecha" th:value="${pedido.fecha}" />
                             <input type="hidden" name="descuento" th:value="${pedido.descuento}" />
@@ -142,11 +144,11 @@
 
                             <input type="hidden" name="estado" value="1"/>
 
-                            <button type="submit" name="guardar" value="En Proceso" class="buttonMarcha button1"> En Proceso <i class="fa fa-hourglass-2" style="background-color: orange; color: white;"></i> </button>
+                            <button type="submit" name="guardar" value="En Proceso" class="buttonMarcha button1"> En Proceso <i class="fas fa-spinner" style="background-color: orange; color: white;"></i> </button>
                         </form>
                         <form th:action="@{/panel/guardarEstado}" method="POST" th:object="${pedido}" style="display: inline-block;">
                             <input type="hidden" name="id_pedido" th:value="${pedido.id_pedido}" />
-                            <input type="hidden" name="nombreC" th:value="${pedido.nombreC}" />
+                            <input type="hidden" name="nombre" th:value="${pedido.nombre}" />
                             <input type="hidden" name="descripcion" th:value="${pedido.descripcion}" />
                             <input type="hidden" name="fecha" th:value="${pedido.fecha}" />
                             <input type="hidden" name="descuento" th:value="${pedido.descuento}" />
@@ -158,7 +160,7 @@
                         </form>
                         <form th:action="@{/panel/guardarEstado}" method="POST" th:object="${pedido}" style="display: inline-block;">
                             <input type="hidden" name="id_pedido" th:value="${pedido.id_pedido}" />
-                            <input type="hidden" name="nombreC" th:value="${pedido.nombreC}" />
+                            <input type="hidden" name="nombre" th:value="${pedido.nombre}" />
                             <input type="hidden" name="descripcion" th:value="${pedido.descripcion}" />
                             <input type="hidden" name="fecha" th:value="${pedido.fecha}" />
                             <input type="hidden" name="descuento" th:value="${pedido.descuento}" />
@@ -171,7 +173,7 @@
 
                         <form th:action="@{/panel/eliminar}" method="POST" th:object="${pedido}" style="display: inline-block;">
                             <input type="hidden" name="id_pedido" th:value="${pedido.id_pedido}" />
-                            <input type="hidden" name="nombreC" th:value="${pedido.nombreC}" />
+                            <input type="hidden" name="nombre" th:value="${pedido.nombre}" />
                             <input type="hidden" name="descripcion" th:value="${pedido.descripcion}" />
                             <input type="hidden" name="fecha" th:value="${pedido.fecha}" />
                             <input type="hidden" name="descuento" th:value="${pedido.descuento}" />
@@ -205,7 +207,7 @@
             </thead>
             <tbody>
                 <tr th:each="pedido : ${pedidos}" th:if="${pedido.estado == 2}">
-                    <td th:text="${pedido.nombreC}"></td>
+                    <td th:text="${pedido.nombre}"></td>
                     <td th:text="${pedido.descripcion}"></td>
                     <td th:text="${pedido.fecha}"></td>
                     <div th:if="${pedido.descuento == true}">
@@ -219,7 +221,7 @@
                     <td>
                         <form th:action="@{/panel/guardarEstado}" method="POST" th:object="${pedido}" style="display: inline-block;">
                             <input type="hidden" name="id_pedido" th:value="${pedido.id_pedido}" />
-                            <input type="hidden" name="nombreC" th:value="${pedido.nombreC}" />
+                            <input type="hidden" name="nombre" th:value="${pedido.nombre}" />
                             <input type="hidden" name="descripcion" th:value="${pedido.descripcion}" />
                             <input type="hidden" name="fecha" th:value="${pedido.fecha}" />
                             <input type="hidden" name="descuento" th:value="${pedido.descuento}" />
@@ -227,11 +229,11 @@
 
                             <input type="hidden" name="estado" value="1"/>
 
-                            <button type="submit" name="guardar" value="En Proceso" class="buttonMarcha button1"> En Proceso <i class="fa fa-hourglass-2" style="background-color: orange; color: white;"></i> </button>
+                            <button type="submit" name="guardar" value="En Proceso" class="buttonMarcha button1"> En Proceso <i class="fas fa-spinner" style="background-color: orange; color: white;"></i> </button>
                         </form>
                         <form th:action="@{/panel/guardarEstado}" method="POST" th:object="${pedido}" style="display: inline-block;">
                             <input type="hidden" name="id_pedido" th:value="${pedido.id_pedido}" />
-                            <input type="hidden" name="nombreC" th:value="${pedido.nombreC}" />
+                            <input type="hidden" name="nombre" th:value="${pedido.nombre}" />
                             <input type="hidden" name="descripcion" th:value="${pedido.descripcion}" />
                             <input type="hidden" name="fecha" th:value="${pedido.fecha}" />
                             <input type="hidden" name="descuento" th:value="${pedido.descuento}" />
@@ -244,7 +246,7 @@
 
                         <form th:action="@{/panel/guardarEstado}" method="POST" th:object="${pedido}" style="display: inline-block;">
                             <input type="hidden" name="id_pedido" th:value="${pedido.id_pedido}" />
-                            <input type="hidden" name="nombreC" th:value="${pedido.nombreC}" />
+                            <input type="hidden" name="nombre" th:value="${pedido.nombre}" />
                             <input type="hidden" name="descripcion" th:value="${pedido.descripcion}" />
                             <input type="hidden" name="fecha" th:value="${pedido.fecha}" />
                             <input type="hidden" name="descuento" th:value="${pedido.descuento}" />
@@ -257,7 +259,7 @@
 
                         <form th:action="@{/panel/eliminar}" method="POST" th:object="${pedido}" style="display: inline-block;">
                             <input type="hidden" name="id_pedido" th:value="${pedido.id_pedido}" />
-                            <input type="hidden" name="nombreC" th:value="${pedido.nombreC}" />
+                            <input type="hidden" name="nombre" th:value="${pedido.nombre}" />
                             <input type="hidden" name="descripcion" th:value="${pedido.descripcion}" />
                             <input type="hidden" name="fecha" th:value="${pedido.fecha}" />
                             <input type="hidden" name="descuento" th:value="${pedido.descuento}" />
@@ -291,7 +293,7 @@
             </thead>
             <tbody>
                 <tr th:each="pedido : ${pedidos}" th:if="${pedido.estado == 3}">
-                    <td th:text="${pedido.nombreC}"></td>
+                    <td th:text="${pedido.nombre}"></td>
                     <td th:text="${pedido.descripcion}"></td>
                     <td th:text="${pedido.fecha}"></td>
                     <div th:if="${pedido.descuento == true}">
@@ -305,7 +307,7 @@
                     <td>
                         <form th:action="@{/panel/guardarEstado}" method="POST" th:object="${pedido}" style="display: inline-block;">
                             <input type="hidden" name="id_pedido" th:value="${pedido.id_pedido}" />
-                            <input type="hidden" name="nombreC" th:value="${pedido.nombreC}" />
+                            <input type="hidden" name="nombre" th:value="${pedido.nombre}" />
                             <input type="hidden" name="descripcion" th:value="${pedido.descripcion}" />
                             <input type="hidden" name="fecha" th:value="${pedido.fecha}" />
                             <input type="hidden" name="descuento" th:value="${pedido.descuento}" />
@@ -313,12 +315,12 @@
 
                             <input type="hidden" name="estado" value="1"/>
 
-                            <button type="submit" name="guardar" value="En Proceso" class="buttonMarcha button1"> En Proceso <i class="fa fa-hourglass-2" style="background-color: orange; color: white;"></i> </button>
+                            <button type="submit" name="guardar" value="En Proceso" class="buttonMarcha button1"> En Proceso <i class="fas fa-spinner" style="background-color: orange; color: white;"></i> </button>
                         </form>
 
                         <form th:action="@{/panel/guardarEstado}" method="POST" th:object="${pedido}" style="display: inline-block;">
                             <input type="hidden" name="id_pedido" th:value="${pedido.id_pedido}" />
-                            <input type="hidden" name="nombreC" th:value="${pedido.nombreC}" />
+                            <input type="hidden" name="nombre" th:value="${pedido.nombre}" />
                             <input type="hidden" name="descripcion" th:value="${pedido.descripcion}" />
                             <input type="hidden" name="fecha" th:value="${pedido.fecha}" />
                             <input type="hidden" name="descuento" th:value="${pedido.descuento}" />
@@ -331,7 +333,7 @@
 
                         <form th:action="@{/panel/guardarEstado}" method="POST" th:object="${pedido}" style="display: inline-block;">
                             <input type="hidden" name="id_pedido" th:value="${pedido.id_pedido}" />
-                            <input type="hidden" name="nombreC" th:value="${pedido.nombreC}" />
+                            <input type="hidden" name="nombre" th:value="${pedido.nombre}" />
                             <input type="hidden" name="descripcion" th:value="${pedido.descripcion}" />
                             <input type="hidden" name="fecha" th:value="${pedido.fecha}" />
                             <input type="hidden" name="descuento" th:value="${pedido.descuento}" />
@@ -344,7 +346,7 @@
 
                         <form th:action="@{/panel/eliminar}" method="POST" th:object="${pedido}" style="display: inline-block;">
                             <input type="hidden" name="id_pedido" th:value="${pedido.id_pedido}" />
-                            <input type="hidden" name="nombreC" th:value="${pedido.nombreC}" />
+                            <input type="hidden" name="nombre" th:value="${pedido.nombre}" />
                             <input type="hidden" name="descripcion" th:value="${pedido.descripcion}" />
                             <input type="hidden" name="fecha" th:value="${pedido.fecha}" />
                             <input type="hidden" name="descuento" th:value="${pedido.descuento}" />
@@ -363,11 +365,7 @@
         <br/>
         <br/>
 
-        <footer>
-            <p>&COPY Derechos de Pizzeria 2023                                
-                <form method="post" th:action="@{/logout}">
-                    <button>Cerrar Sesión</button>
-                </form></p>
-        </footer>
+        <footer th:replace="layout/plantilla :: pFooter"/>
+
     </body>
 </html>

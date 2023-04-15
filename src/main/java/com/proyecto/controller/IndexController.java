@@ -1,21 +1,19 @@
 package com.proyecto.controller;
 
-import com.proyecto.service.PedidoService;
-import lombok.extern.slf4j.Slf4j;
+import com.proyecto.service.ArticuloService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-@Slf4j
-
 public class IndexController {
-    
     @Autowired
-    private PedidoService pedidoService;
+    ArticuloService articuloService;
     @GetMapping("/")
-    public String inicio(){
+    public String inicio(Model model) {
+        var articulos = articuloService.getArticulos(true);
+        model.addAttribute("articulo", articulos);
         return "index";
     }
 }

@@ -1,0 +1,74 @@
+* {
+    background-color: whitesmoke;
+    font-family: sams-serif;
+}
+
+.buttonMarcha {
+    border-radius: 12px;
+    background-color: orange;
+    border: none;
+    color: black;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.button2:hover {
+    border-radius: 12px;
+    box-shadow: 0 24px 32px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    font-size: 16px;
+}
+
+.buttonEntregado {
+    border-radius: 12px;
+    background-color: green;
+    border: none;
+    color: black;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.button1:hover {
+    border-radius: 12px;
+    box-shadow: 0 24px 32px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    font-size: 16px;
+}
+
+.buttonCancelado {
+    border-radius: 12px;
+    background-color: red;
+    border: none;
+    color: black;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.button3:hover {
+    border-radius: 12px;
+    box-shadow: 0 24px 32px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    font-size: 16px;
+}
+
+.tableEntrantes {
+    border-collapse: collapse;
+    text-align: center;
+    width: 55%;
+}
+
+.tablePedidos {
+    border-collapse: collapse;
+    text-align: center;
+    width: 55%;
+}
+
+head {
+    text-align: center;
+}

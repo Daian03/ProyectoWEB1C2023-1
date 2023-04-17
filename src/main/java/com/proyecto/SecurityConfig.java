@@ -29,7 +29,6 @@ public class SecurityConfig {
                 .requestMatchers(
                         "/",
                         "/index",
-                        "/**",
                         "/webjars/**",
                         "/css/**",
                         "/articulo/**").permitAll()

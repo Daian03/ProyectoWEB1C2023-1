@@ -30,7 +30,6 @@ public class SecurityConfig {
                         "/",
                         "/**",
                         "/index",
-                        "/**",
                         "/webjars/**",
                         "/css/**",
                         "/articulo/**").permitAll()

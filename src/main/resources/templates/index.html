@@ -15,15 +15,63 @@
         <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script> 
 
         <style>
-            body {
-                font-family: "Arial", Georgia, Serif;
-                margin-left: 150px;
-                padding: 20px;
+            #panel-izquierdo {
+                background-color: #f0f0f0;
+                padding-top: 10px;
             }
-            h1, h2, h3, h4, h5, h6 {
+
+            h4{
                 font-family: "Calibri";
                 letter-spacing: 5px;
             }
+
+            h5{
+                font-family: "Calibri";
+            }
+
+            .card {
+                margin: 10px;
+            }
+
+
+        </style>
+
+        <!-- 
+        <style>
+            #panel-izquierdo {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 15%;
+                height: 100%;
+                background-color: #f0f0f0;
+                padding-top: 15px;
+                padding-left: 15px;
+            }
+
+            
+
+            body {
+                font-family: "Arial", Georgia, Serif;
+                margin-left: 250px;
+                width: 85%;
+                padding-top: 10px;
+                height: 100%;
+            }
+
+            .card {
+                margin: 10px;
+            }
+        </style>
+        
+        <style>
+            body {
+                font-family: "Arial", Georgia, Serif;
+                margin-left: 250px;
+                width: 100%;
+                padding-top: 10px;
+            }
+            
 
             #panel-izquierdo {
                 position: fixed;
@@ -32,43 +80,63 @@
                 width: 300px;
                 height: 100%;
                 background-color: #f0f0f0;
-                padding: 10px;
-                padding-left: 10px;
+                padding-top: 15px;
+                padding-left: 15px;
             }
 
             #contenido {
-                margin-left: 200px;
-                padding: 20px;
+                margin-left: 10px;
+            }
+
+            .card {
+                margin: 10px;
             }
         </style>
+        -->
     </head>
-    <div id="panel-izquierdo">
-        <h4>Realizar pedido 🍕</h4>
-        <!--
-        <form th:action="@{/panel/guardarEstado}" method="POST" th:object="${pedido}" style="display: inline-block;">
-            <input type="hidden" name="id_pedido" th:value="${pedido.id_pedido}" />
-            <input type="hidden" name="nombre" th:value="${pedido.nombre}" />
-            <input type="hidden" name="descripcion" th:value="${pedido.descripcion}" />
-            <input type="hidden" name="fecha" th:value="${pedido.fecha}" />
-            <input type="hidden" name="descuento" th:value="${pedido.descuento}" />
-            <input type="hidden" name="total" th:value="${pedido.total}" />
-        </form> -->
 
-        <input type="hidden" name="estado" value="1"/>
-    </div>
-    <div class="container">
-        <h2>Nuestras Pizzas Deliciosas y sabrosas</h2>
-        <div class="row row-cols-3">
-            <div class="card" th:each="articulo : ${articulos}">
-                <div class="card-body">
-                    <img th:src="${articulo.imagen}" alt="foto" height="200px"/><br/>
-                    <h3 class="card-title">[[${articulo.nombre}]]</h3>
-                    <p>[[${articulo.descripcion}]]</p>
-                    <h6 class="card-subtitle mb-2 text-muted text-end">Precio: [[${articulo.precio}]]</h6>
-                    <a href="">Agregar al Pedido</a>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2" id="panel-izquierdo">
+                <h4 class="text-center">Realizar pedido 🍕</h4>
+                <div class = "form_pedidos">
+                    <h5>Fecha</br></h5>
+                    <h5>Detalle</br></h5>
+                    <h5>Total</br></h5>
+                </div>
+                <!--
+                <form th:action="@{/panel/guardarEstado}" method="POST" th:object="${pedido}" style="display: inline-block;">
+                    <input type="hidden" name="id_pedido" th:value="${pedido.id_pedido}" />
+                    <input type="hidden" name="nombre" th:value="${pedido.nombre}" />
+                    <input type="hidden" name="descripcion" th:value="${pedido.descripcion}" />
+                    <input type="hidden" name="fecha" th:value="${pedido.fecha}" />
+                    <input type="hidden" name="descuento" th:value="${pedido.descuento}" />
+                    <input type="hidden" name="total" th:value="${pedido.total}" />
+                </form> 
+                <input type="hidden" name="estado" value="1"/>
+                -->
+            </div>
+            <div class="col-md-10">
+                <div class="my-5 mx-auto">
+                    <div class="container">  
+                        <header class="text-center"><h2>Nuestras Pizzas Deliciosas y sabrosas</h2></header>
+                        <body>            
+                            <div class="row row-cols-8">
+                                <div class="card" th:each="articulo : ${articulos}">
+                                    <div class="card-body">
+                                        <img th:src="${articulo.imagen}" alt="foto" height="182px"/><br/>
+                                        <h3 class="card-title">[[${articulo.nombre}]]</h3>
+                                        <p>[[${articulo.descripcion}]]</p>
+                                        <h6 class="card-subtitle mb-2 text-muted text-end">Precio: [[${articulo.precio}]]</h6>
+                                        <a href="">Agregar al Pedido</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </body>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</body>
+
 </html>

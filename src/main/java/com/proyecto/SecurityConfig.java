@@ -31,8 +31,7 @@ public class SecurityConfig {
                         "/**",
                         "/index",
                         "/webjars/**",
-                        "/css",
-                        "/js/**",
+                        "/css/**",
                         "/articulo/**").permitAll()
                 .requestMatchers(
                         "/panel/panel")
@@ -42,7 +41,7 @@ public class SecurityConfig {
                 .hasAnyRole("ADMIN", "VENDEDOR")
                 .requestMatchers(
                         "/panel/eliminar")
-                .hasAnyRole("ADMIN")
+                .hasRole("ADMIN")
                 )
                 .formLogin((form) -> form
                 .permitAll()

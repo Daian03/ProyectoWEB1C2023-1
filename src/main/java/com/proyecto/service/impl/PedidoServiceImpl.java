@@ -35,7 +35,7 @@ public class PedidoServiceImpl implements PedidoService {
     @Transactional(readOnly = true)
     @Override
     public Pedido getPedido(Pedido pedido) {
-        return pedido ;
+        return pedido;
     }
 }
 

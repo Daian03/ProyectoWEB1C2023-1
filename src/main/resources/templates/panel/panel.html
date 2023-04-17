@@ -3,9 +3,7 @@
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://wwww.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
-    
-    <!--<head th:replace="~{layout/plantilla :: head}">-->
-    
+
     <head>
         <title>Admin Panel</title>
 
@@ -13,6 +11,7 @@
         <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}"/>
         <link rel="stylesheet" th:href="@{/webjars/font-awesome/5.15.3/css/all.min.css}"/>
         <link href="/css/panel.css" rel="stylesheet" />
+        <link th:href="@{/css/panel.css}" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <header>
@@ -50,7 +49,7 @@
                             <input type="hidden" name="id_pedido" th:value="${pedido.id_pedido}" />
                             <input type="hidden" name="nombre" th:value="${pedido.nombre}" />
                             <input type="hidden" name="descripcion" th:value="${pedido.descripcion}" />
-                            <input type="hidden" name="fecha" th:value="${pedido.fecha}" />
+                            <input type="hidden" name="fecha" th:value="${pedido.fecha}" /> 
                             <input type="hidden" name="descuento" th:value="${pedido.descuento}" />
                             <input type="hidden" name="total" th:value="${pedido.total}" />
 
@@ -85,7 +84,7 @@
 
                             <button type="submit" name="guardar" value="Cancelar" class="buttonCancelado button3"> Cancelar <i class="fa fa-thumbs-down" style="background-color: red; color: white;"></i> </button>
                         </form>
-                        
+
                         <form th:action="@{/panel/eliminar}" method="POST" th:object="${pedido}" style="display: inline-block;">
                             <input type="hidden" name="id_pedido" th:value="${pedido.id_pedido}" />
                             <input type="hidden" name="nombre" th:value="${pedido.nombre}" />

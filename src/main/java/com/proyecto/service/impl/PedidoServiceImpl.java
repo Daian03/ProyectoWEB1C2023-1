@@ -10,16 +10,16 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class PedidoServiceImpl implements PedidoService {
-    
+
     @Autowired
     private PedidoDao pedidoDao;
-    
+
     @Override
     @Transactional(readOnly = true)
     public List<Pedido> getPedidos() {
         return (List<Pedido>) pedidoDao.findAll();
     }
-    
+
     @Override
     @Transactional
     public void savePedido(Pedido pedido) {
@@ -32,9 +32,10 @@ public class PedidoServiceImpl implements PedidoService {
         pedidoDao.delete(pedido);
     }
 
-    @Override
     @Transactional(readOnly = true)
+    @Override
     public Pedido getPedido(Pedido pedido) {
-         return pedidoDao.findById(pedido.getIdPedido()).orElse(null);
-    } 
+        return pedido ;
+    }
 }
+

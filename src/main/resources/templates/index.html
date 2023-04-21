@@ -1,142 +1,230 @@
 <!DOCTYPE html>
-<html lang="es" 
-      xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://wwww.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
-    <head>
-        <title>Pizzeria Feliz :)</title>
-        <meta charset="UTF-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <!--<link th:href="@{/css/panel.css}" rel="stylesheet" type="text/css"/>-->
-        <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
-        <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}"/>
-        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
-        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
-        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script> 
+<html lang="es">
 
-        <style>
-            #panel-izquierdo {
-                background-color: #f0f0f0;
-                padding-top: 10px;
-            }
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizzería</title>
+    <link rel="shortcut icon" href="Vector-Butterfly-PNG-Clipart.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/indexD.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+</head>
 
-            h4{
-                font-family: "Calibri";
-                letter-spacing: 5px;
-            }
-
-            h5{
-                font-family: "Calibri";
-            }
-
-            .card {
-                margin: 10px;
-            }
-
-
-        </style>
-
-        <!-- 
-        <style>
-            #panel-izquierdo {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 15%;
-                height: 100%;
-                background-color: #f0f0f0;
-                padding-top: 15px;
-                padding-left: 15px;
-            }
-
-            
-
-            body {
-                font-family: "Arial", Georgia, Serif;
-                margin-left: 250px;
-                width: 85%;
-                padding-top: 10px;
-                height: 100%;
-            }
-
-            .card {
-                margin: 10px;
-            }
-        </style>
-        
-        <style>
-            body {
-                font-family: "Arial", Georgia, Serif;
-                margin-left: 250px;
-                width: 100%;
-                padding-top: 10px;
-            }
-            
-
-            #panel-izquierdo {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 300px;
-                height: 100%;
-                background-color: #f0f0f0;
-                padding-top: 15px;
-                padding-left: 15px;
-            }
-
-            #contenido {
-                margin-left: 10px;
-            }
-
-            .card {
-                margin: 10px;
-            }
-        </style>
-        -->
-    </head>
-
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-2" id="panel-izquierdo">
-                <h4 class="text-center">Realizar pedido 🍕</h4>
-                <div class = "form_pedidos">
-                    <h5>Fecha</br></h5>
-                    <h5>Detalle</br></h5>
-                    <h5>Total</br></h5>
+<body>
+    <header>
+        <nav>
+            <a href="#">Inicio</a>
+            <a href="#">Acerca de</a>
+            <a href="panel.html">Panel</a>
+            <a href="#">Servicios</a>
+            <a href="#">Contacto</a>
+        </nav>
+        <section class="textos-header">
+            <h1>Pizzeria Bella Napoli</h1>
+            <h4>"La pizza perfecta en cada bocado"</h4>
+        </section>
+        <div class="wave" style="height: 150px; overflow: hidden;"><svg viewBox="0 0 500 150" preserveAspectRatio="none"
+                style="height: 100%; width: 100%;">
+                <path d="M-0.00,49.85 C150.00,149.60 349.20,-49.85 500.00,49.85 
+                      L500.00,149.60 L-0.00,149.60 Z" style="stroke: none; fill: #f5ebd2"></path>
+            </svg>
+        </div>
+    </header>
+    <section class="margin" style="background-color: #f5ebd2">
+        <section class="contenedor sobre-nosotros">
+            <h2 class="titulo">Nosotros</h2>
+            <div class="contenedor-sobre-nosotros">
+                <div class="imagen">
+                    <img src="https://i.pinimg.com/originals/bf/0f/67/bf0f6711fddfe41ad3180bb488690ae6.jpg" alt="" class="imagen-about-us" />
                 </div>
-                <!--
-                <form th:action="@{/panel/guardarEstado}" method="POST" th:object="${pedido}" style="display: inline-block;">
-                    <input type="hidden" name="id_pedido" th:value="${pedido.id_pedido}" />
-                    <input type="hidden" name="nombre" th:value="${pedido.nombre}" />
-                    <input type="hidden" name="descripcion" th:value="${pedido.descripcion}" />
-                    <input type="hidden" name="fecha" th:value="${pedido.fecha}" />
-                    <input type="hidden" name="descuento" th:value="${pedido.descuento}" />
-                    <input type="hidden" name="total" th:value="${pedido.total}" />
-                </form> 
-                <input type="hidden" name="estado" value="1"/>
-                -->
+                <img src="../../../../../Página Web/imagenes/pizzeria.jpg" alt=""/>
+                <div class="contenido-textos">
+                    <h3>La Pizzeria Bella Napoli es un lugar lleno de energía y alegría, donde los clientes
+                        pueden disfrutar de una amplia variedad de pizzas y acompañamientos deliciosos.
+                        Su decoración es colorida y vibrante, con mesas y sillas de madera rústica que crean
+                        un ambiente acogedor y relajado.
+                    </h3>
+                    <h3>El aroma de las pizzas recién horneadas inunda el aire y hace que la boca se te haga agua.
+                        La pizza de pepperoni es una de las favoritas de los clientes, pero también hay opciones
+                        vegetarianas y sin gluten para satisfacer todos los gustos.
+                    </h3>
+                </div>
             </div>
-            <div class="col-md-10">
-                <div class="my-5 mx-auto">
-                    <div class="container">  
-                        <header class="text-center"><h2>Nuestras Pizzas Deliciosas y sabrosas</h2></header>
-                        <body>            
-                            <div class="row row-cols-8">
-                                <div class="card" th:each="articulo : ${articulos}">
-                                    <div class="card-body">
-                                        <img th:src="${articulo.imagen}" alt="foto" height="182px"/><br/>
-                                        <h3 class="card-title">[[${articulo.nombre}]]</h3>
-                                        <p>[[${articulo.descripcion}]]</p>
-                                        <h6 class="card-subtitle mb-2 text-muted text-end">Precio: [[${articulo.precio}]]</h6>
-                                        <a href="">Agregar al Pedido</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </body>
+        </section>
+    </section>
+    <section class="productos">
+        <div class="contenedor">
+            <h2 class="titulo">Nuestros productos</h2>
+            <div class="galeria-port">
+                <div class="imagen-port">
+                    <img src="https://o.remove.bg/downloads/60856d56-4e3d-480d-8a92-239c2f6bb661/hawaiana-removebg-preview.png" width="175" height="175" alt="" />
+                    <div class="hover-galeria">
+                        <h3 style="color: whitesmoke; padding-bottom: 10px;">Pizza Hawaiana</h3>
+                        <h4 style="color: whitesmoke; padding-bottom: 10px;">¢ 8500</h4>
+                        <img src="imagenes/carro-de-la-carretilla.png" alt="" />
+                        <ul class="nav-menu">
+                            <li class="nav-menu-item">
+                                <a class="nav-link nav-menu-link" href="nuestrosProductos.html">Añadir al carrito</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="imagen-port">
+                    <img src="https://o.remove.bg/downloads/2a129754-c8ff-4a51-8f97-fe00e4a75b62/pepperoni-removebg-preview.png" width="165" height="165" alt="" />
+                    <div class="hover-galeria">
+                        <h3 style="color: whitesmoke; padding-bottom: 10px;">Pizza Pepperoni</h3>
+                        <h4 style="color: whitesmoke; padding-bottom: 10px;">¢ 8500</h4>
+                        <img src="imagenes/carro-de-la-carretilla.png" alt="" />
+                        <ul class="nav-menu">
+                            <li class="nav-menu-item">
+                                <a class="nav-link nav-menu-link" href="nuestrosProductos.html">Añadir al carrito</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="imagen-port">
+                    <img src="https://o.remove.bg/downloads/cca16d41-aefa-493c-a571-68e72e6b3bc8/margarita-removebg-preview.png" width="150" height="150" alt="" />
+                    <div class="hover-galeria">
+                        <h3 style="color: whitesmoke; padding-bottom: 10px;">Pizza Margarita</h3>
+                        <h4 style="color: whitesmoke; padding-bottom: 10px;">¢ 8500</h4>
+                        <img src="imagenes/carro-de-la-carretilla.png" alt="" />
+                        <ul class="nav-menu">
+                            <li class="nav-menu-item">
+                                <a class="nav-link nav-menu-link" href="nuestrosProductos.html">Añadir al carrito</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="imagen-port">
+                    <img src="https://o.remove.bg/downloads/9394e5f8-cfd8-485d-b652-ceb552fe2fde/newyork-removebg-preview.png" width="165" height="165" alt="" />
+                    <div class="hover-galeria">
+                        <h3 style="color: whitesmoke; padding-bottom: 10px;">Pizza New York</h3>
+                        <h4 style="color: whitesmoke; padding-bottom: 10px;">¢ 8500</h4>
+                        <img src="imagenes/carro-de-la-carretilla.png" alt="" />
+                        <ul class="nav-menu">
+                            <li class="nav-menu-item">
+                                <a class="nav-link nav-menu-link" href="nuestrosProductos.html">Añadir al carrito</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="imagen-port">
+                    <img src="https://o.remove.bg/downloads/972aac76-8661-41c4-811b-7894c5d7c3e3/calzone-removebg-preview.png" width="175" height="175" alt="" />
+                    <div class="hover-galeria">
+                        <h3 style="color: whitesmoke; padding-bottom: 10px;">Calzone</h3>
+                        <h4 style="color: whitesmoke; padding-bottom: 10px;">¢ 8500</h4>
+                        <img src="imagenes/carro-de-la-carretilla.png" alt="" />
+                        <ul class="nav-menu">
+                            <li class="nav-menu-item">
+                                <a class="nav-link nav-menu-link" href="nuestrosProductos.html">Añadir al carrito</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="imagen-port">
+                    <img src="https://o.remove.bg/downloads/05946246-4f28-4318-968b-b8e463914ea1/290-2909698_itzza-pitzza-best-pizza-in-karachi-best-pizza-removebg-preview.png" width="175" height="175" alt="" />
+                    <div class="hover-galeria">
+                        <h3 style="color: whitesmoke; padding-bottom: 10px;">Bread sticks</h3>
+                        <h4 style="color: whitesmoke; padding-bottom: 10px;">¢ 8500</h4>
+                        <img src="imagenes/carro-de-la-carretilla.png" alt="" />
+                        <ul class="nav-menu">
+                            <li class="nav-menu-item">
+                                <a class="nav-link nav-menu-link" href="nuestrosProductos.html">Añadir al carrito</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="imagen-port">
+                    <img src="https://www.pngplay.com/wp-content/uploads/9/Lasagna-Transparent-PNG.png" width="175" height="175" alt="" />
+                    <div class="hover-galeria">
+                        <h3 style="color: whitesmoke; padding-bottom: 10px;">Lasagna</h3>
+                        <h4 style="color: whitesmoke; padding-bottom: 10px;">¢ 8500</h4>
+                        <img src="imagenes/carro-de-la-carretilla.png" alt="" />
+                        <ul class="nav-menu">
+                            <li class="nav-menu-item">
+                                <a class="nav-link nav-menu-link" href="nuestrosProductos.html">Añadir al carrito</a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-
+    </section>
+    <section class="margin" style="background-color: #f5ebd2">
+        <section class="contenedor sobre-nosotros">
+            <h2 class="titulo">Nuestra historia</h2>
+            <div class="contenedor-sobre-nosotros">
+                <div class="contenido-textos">
+                    <h3>La Pizzeria Bella Napoli fue fundada en Nápoles, Italia, en el año 1955
+                        por el Sr. Matteo Moretti. El Sr. Esposito provenía de una familia de
+                        panaderos y pizzeros y decidió abrir su propia pizzería para seguir la tradición
+                        familiar.
+                    </h3>
+                    <h3>
+                        El éxito de la Pizzeria Bella Napoli se extendió más allá de Nápoles y pronto se
+                        convirtió en un destino obligado para los amantes de la pizza que visitaban Italia.
+                        La pizzería recibió varios premios y reconocimientos por su calidad y autenticidad.
+                    </h3>
+                    <h3>
+                        Hoy en día, la Pizzeria Bella Napoli es considerada una institución en el mundo de la
+                        pizza y ha expandido su presencia abriendo su primer restaurante en nuestro país, manteniendo
+                        siempre la tradición y la calidad que la han hecho famosa.
+                    </h3>
+                </div>
+                <div class="imagen">
+                    <img src="https://i.pinimg.com/474x/f2/64/bd/f264bd634fc0a2c2ad0411f4e8b9dd67.jpg" width="500" height="500" alt="" class="imagen-about-us">
+                </div>
+            </div>
+        </section>
+    </section>
+    <section class="productos">
+        <section class="contenedor sobre-nosotros">
+            <h2 class="titulo">Ubícanos</h2>
+            <div class="contenedor-sobre-nosotros">
+                <section class="mapa">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1732.8385318817045!2d-84.03839229583483!3d9.
+                     931436974340292!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa0e3f359e68d0b%3A0xe354216071b3cd7f!2s20
+                     3%201%2C%20San%20Jos%C3%A9%20Province%2C%20San%20Pedro%2C%2011501!5e1!3m2!1ses!2scr!4v1675642403611!5m2!1ses!2
+                     scr" width="600" height="450" style="border:0;" allowfullscreen=""
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </section>
+                <div class="contenido-textos">
+                    <p>Con los mejores precios, excelente servicio, y algunas de las mejores comidas que usted haya
+                        probado...
+                        ¡Pizzeria Bella Napoli es el lugar!</p>
+                    <br>
+                    <p><img src="https://o.remove.bg/downloads/92a99c48-1f5b-45a5-9900-d41a86ab6d0b/wall-clock-removebg-preview.png" width="40" height="30" alt="" class="horario"> Lunes - Sábado:
+                        8 am - 10 pm </p>
+                    <p>Domingo: 10 am - 8 pm </p>
+                </div>
+            </div>
+        </section>
+    </section>
+    <footer>
+        <div class="contenedor-footer">
+            <div class="content-foo">
+                <img src="https://o.remove.bg/downloads/bc834dec-3972-4902-a144-b5b6f79bb4b6/call-removebg-preview.png" alt="" />
+                <h4 style="color: #d85b18;">Phone</h4>
+                <p>(+506) 2275-8989</p>
+            </div>
+            <div class="content-foo">
+                <img src="https://o.remove.bg/downloads/45db2fcd-7ddd-498f-878b-3cc1f41a4953/letter-removebg-preview.png" alt="" />
+                <h4 style="color: #d85b18;">Email</h4>
+                <p>BellaNapoli@pagina.com</p>
+            </div>
+            <div class="content-foo">
+                <img src="https://o.remove.bg/downloads/8ab414d4-7a92-489a-924a-fb9fb4170205/placeholder-removebg-preview.png" alt="" />
+                <h4 style="color: #d85b18;">Location</h4>
+                <p>San Pedro, San José</p>
+            </div>
+        </div>
+        <h2 class="titulo-final">
+            &copy; Pizzeria Bella Napoli
+        </h2>
+    </footer>
+</body>
 </html>
